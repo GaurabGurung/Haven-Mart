@@ -10,7 +10,7 @@ const ProductCard = ({ item }) => {
     <Col lg="3" md="6" className="mb-2">
       <div className="product__item">
         <div className="product__img">
-          <motion.img whileHover={{ scale: 1.1 }} src={item.imgUrl} alt="" />
+          <img src={item.imgUrl} alt="" />
         </div>
         <div className="product__info p-2">
           <h3 className="product__name">

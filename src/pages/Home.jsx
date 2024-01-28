@@ -11,6 +11,7 @@ import BestSales from "../components/BestSales/BestSales";
 
 import HeroImg from "../assets/images/hero-img.png";
 import "../styles/home.scss";
+import LimitedOffer from "../components/LimitedOffer/LimitedOffer";
 
 const Home = () => {
   const year = new Date().getFullYear();
@@ -48,6 +49,7 @@ const Home = () => {
       <Services />
       <TrendingProducts />
       <BestSales />
+      <LimitedOffer />
     </Helmet>
   );
 };
