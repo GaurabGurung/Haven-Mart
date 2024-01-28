@@ -1,0 +1,39 @@
+.services {
+  .service_item {
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    column-gap: 0.8rem;
+    border-radius: 5px;
+    cursor: pointer;
+    height: 100%;
+    width: 100%;
+
+    span i {
+      font-size: 2.2rem;
+      background: var(--primary-color);
+      color: #fff;
+      border-radius: 999px;
+      padding: 10px;
+      font-weight: 400;
+    }
+
+    h3 {
+      font-size: 1.1rem;
+      color: var(--primary-color);
+      font-weight: 600;
+    }
+
+    p {
+      font-size: 0.9rem;
+      margin-top: 5px;
+      color: #222;
+    }
+  }
+}
+.trending__products {
+  h2 {
+    color: var(--primary-color);
+    font-weight: 600;
+  }
+}

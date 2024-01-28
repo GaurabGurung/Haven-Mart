@@ -1,0 +1,26 @@
+.product__item {
+  cursor: pointer;
+  .product__img {
+    overflow: hidden;
+  }
+  h3 {
+    font-size: 1.1rem;
+    color: var(--primary-color);
+    font-weight: 600;
+    margin-top: 15px;
+  }
+  .product__info {
+    font-size: 0.9rem;
+  }
+  .product__card_btn {
+    .price {
+      color: var(--primary-color);
+      font-size: 1.3rem;
+      font-weight: 500;
+    }
+    i {
+      font-size: 1.5rem;
+      padding: 5px;
+    }
+  }
+}
