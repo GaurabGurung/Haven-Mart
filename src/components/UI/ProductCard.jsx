@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 
 const ProductCard = ({ item }) => {
   return (
-    <Col lg="3" md="6">
+    <Col lg="3" md="6" className="mb-2">
       <div className="product__item">
         <div className="product__img">
           <motion.img whileHover={{ scale: 1.1 }} src={item.imgUrl} alt="" />
@@ -18,7 +18,7 @@ const ProductCard = ({ item }) => {
           </h3>
           <span>{item.category}</span>
         </div>
-        <div className="product__card_btn d-flex align-items-center justify-content-around p-2">
+        <div className="product__card_btn d-flex align-items-center justify-content-between p-2">
           <span className="price">{item.price}</span>
           <motion.span whileTap={{ scale: 1.1 }}>
             <i className="ri-add-circle-fill"></i>

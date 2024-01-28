@@ -1,20 +1,14 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext } from "react";
 import "../TrendingProducts/TrendingProducts.scss";
 
 import { Container, Row, Col } from "reactstrap";
 
 import ProductsList from "../UI/ProductsList";
-import products from "../../assets/data/products";
+import { ProductsContext } from "../../context/products.context";
 
 const TrendingProducts = () => {
-  const [data, setData] = useState(products);
-  useEffect(() => {
-    const filteredProductItems = products.filter(
-      (item) => item.category === "chair"
-    );
-    setData(filteredProductItems);
-  }, []);
-  console.log(data);
+  const { trendingProducts } = useContext(ProductsContext);
+
   return (
     <section className="trending__products">
       <Container>
@@ -22,7 +16,7 @@ const TrendingProducts = () => {
           <Col lg="12" className="text-center">
             <h2>Trending Products</h2>
           </Col>
-          <ProductsList data={data} />
+          <ProductsList data={trendingProducts} />
         </Row>
       </Container>
     </section>

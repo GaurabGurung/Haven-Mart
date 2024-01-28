@@ -5,11 +5,12 @@ import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 
 import Helmet from "../components/Helmet/Helmet";
+import Services from "../services/services";
+import TrendingProducts from "../components/TrendingProducts/TrendingProducts";
+import BestSales from "../components/BestSales/BestSales";
 
 import HeroImg from "../assets/images/hero-img.png";
 import "../styles/home.scss";
-import Services from "../services/services";
-import TrendingProducts from "../components/TrendingProducts/TrendingProducts";
 
 const Home = () => {
   const year = new Date().getFullYear();
@@ -46,6 +47,7 @@ const Home = () => {
       </section>
       <Services />
       <TrendingProducts />
+      <BestSales />
     </Helmet>
   );
 };

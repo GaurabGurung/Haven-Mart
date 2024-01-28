@@ -1,17 +1,29 @@
 .product__item {
   cursor: pointer;
+  margin-top: 30px;
+
+  &:hover {
+    box-shadow: 0 0 15px rgba(190, 188, 188, 0.149);
+  }
+
   .product__img {
     overflow: hidden;
+    transition: transform 0.3s ease;
   }
+
   h3 {
     font-size: 1.1rem;
     color: var(--primary-color);
     font-weight: 600;
     margin-top: 15px;
+    transition: transform 0.3s ease;
   }
+
   .product__info {
     font-size: 0.9rem;
+    height: 100%;
   }
+
   .product__card_btn {
     .price {
       color: var(--primary-color);
