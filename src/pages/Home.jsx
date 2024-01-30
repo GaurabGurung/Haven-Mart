@@ -12,6 +12,8 @@ import BestSales from "../components/BestSales/BestSales";
 import HeroImg from "../assets/images/hero-img.png";
 import "../styles/home.scss";
 import LimitedOffer from "../components/LimitedOffer/LimitedOffer";
+import NewArrivals from "../components/NewArrivals/NewArrivals";
+import PopularInCategory from "../components/popularInCategory/popularInCategory";
 
 const Home = () => {
   const year = new Date().getFullYear();
@@ -50,6 +52,8 @@ const Home = () => {
       <TrendingProducts />
       <BestSales />
       <LimitedOffer />
+      <NewArrivals />
+      <PopularInCategory />
     </Helmet>
   );
 };

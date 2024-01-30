@@ -4,14 +4,16 @@ import { useState, useEffect } from "react";
 
 export const ProductsContext = createContext({
   trendingProducts: [],
-  setTrendingProducts: null,
-  setBestSalesProducts: null,
   bestSalesProducts: [],
+  newArrivals: [],
+  popularInCategory: [],
 });
 
 export const ProductsProvider = ({ children }) => {
   const [trendingProducts, setTrendingProducts] = useState([]);
   const [bestSalesProducts, setBestSalesProducts] = useState([]);
+  const [newArrivals, setNewArrivals] = useState([]);
+  const [popularInCategory, setPopularInCategory] = useState([]);
 
   useEffect(() => {
     const filteredTrendingProducts = products.filter(
@@ -23,13 +25,23 @@ export const ProductsProvider = ({ children }) => {
       (items) => items.category === "sofa"
     );
     setBestSalesProducts(filteredBestSalesProducts);
+
+    const filteredNewArrivals = products.filter(
+      (item) => item.category === "mobile" || item.category === "wireless"
+    );
+    setNewArrivals(filteredNewArrivals);
+
+    const filteredPopularInCategory = products.filter(
+      (item) => item.category === "watch"
+    );
+    setPopularInCategory(filteredPopularInCategory);
   }, []);
 
   const value = {
     trendingProducts,
-    setTrendingProducts,
     bestSalesProducts,
-    setBestSalesProducts,
+    newArrivals,
+    popularInCategory,
   };
 
   return (
