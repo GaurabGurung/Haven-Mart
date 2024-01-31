@@ -16,12 +16,10 @@ const Footer = () => {
               <h1 className="footer__title">Haven Mart</h1>
             </div>
             <p className="mt-4">
-              Embrace the beauty of minimalism and modern aesthetics to
-              transform your home into a stylish haven. Discover handpicked
-              decor pieces and furnishings that seamlessly blend functionality
-              with elegance. Our curated selection promises to create a
-              contemporary ambiance, where every element contributes to a
-              harmonious and sophisticated interior.
+              Discover a world of quality and style at Haven Mart. We curate the
+              finest selection of products to elevate your lifestyle. Our
+              commitment is to provide unparalleled comfort and sophistication.
+              Explore our collection for a home that reflects your unique taste.
             </p>
           </Col>
           <Col lg="3">
