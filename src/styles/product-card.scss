@@ -7,6 +7,9 @@
     img {
       transform: scale(1.1);
     }
+    i {
+      display: inline;
+    }
   }
 
   .product__img {
@@ -38,6 +41,16 @@
     i {
       font-size: 2rem;
       padding: 5px;
+      display: none;
+    }
+  }
+  &:hover {
+    box-shadow: 0 0 15px rgba(190, 188, 188, 0.338);
+    img {
+      transform: scale(1.1);
+    }
+    i {
+      display: inline;
     }
   }
 }

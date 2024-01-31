@@ -1,20 +1,28 @@
 .footer {
   background: var(--primary-color);
+  padding-top: 30px;
+  padding-bottom: 60px;
   color: #fff;
-  h1 {
-    font-size: 1.2rem;
-    font-weight: 700;
+
+  p {
+    line-height: 30px;
+    color: rgba(255, 255, 255, 0.735);
   }
 
-  .logo {
+  .footer__quick-links ul li {
+    background: var(--primary-color);
+    color: rgba(255, 255, 255, 0.735);
     display: flex;
-    align-items: center;
-    column-gap: 8px;
+    gap: 1rem;
+  }
+  .footer__title {
+    margin-bottom: 20px;
+    font-size: 1.1rem;
+    color: #fff;
+  }
 
-    img {
-      width: 1.5rem;
-      height: 1.5rem;
-      color: #fff;
-    }
+  .footer__copyright {
+    font-size: 0.9rem;
+    margin-top: 40px;
   }
 }

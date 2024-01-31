@@ -1,55 +1,95 @@
 import React from "react";
 import "../Footer/Footer.scss";
 
-import { Col, Container, Row } from "react-bootstrap";
-
 import logo from "../../assets/images/eco-logo.png";
+import { ListGroup, Col, Container, Row, ListGroupItem } from "reactstrap";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
+  const year = new Date().getFullYear();
   return (
     <section className="footer">
       <Container>
         <Row>
           <Col lg="4">
             <div className="logo">
-              <h1>Haven Mart</h1>
+              <h1 className="footer__title">Haven Mart</h1>
             </div>
-            <p className="mt-3">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente
-              ipsa temporibus expedita ipsum architecto, facilis inventore
-              praesentium soluta distinctio dignissimos explicabo necessitatibus
-              repellendus aspernatur. Possimus perspiciatis soluta deleniti
-              doloribus illum.
+            <p className="mt-4">
+              Embrace the beauty of minimalism and modern aesthetics to
+              transform your home into a stylish haven. Discover handpicked
+              decor pieces and furnishings that seamlessly blend functionality
+              with elegance. Our curated selection promises to create a
+              contemporary ambiance, where every element contributes to a
+              harmonious and sophisticated interior.
             </p>
           </Col>
           <Col lg="3">
-            <h1> Top Categories</h1>
-            <p className="mt-3">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente
-              ipsa temporibus expedita ipsum architecto, facilis inventore
-              praesentium soluta distinctio dignissimos explicabo necessitatibus
-              repellendus aspernatur. Possimus perspiciatis soluta deleniti
-              doloribus illum.
-            </p>
+            <div className="footer__quick-links">
+              <h4 className="footer__title"> Top Categories</h4>
+              <ListGroup>
+                <ListGroupItem className="ps-0 border-0">
+                  <Link to="#">Mobile Phones</Link>
+                </ListGroupItem>
+                <ListGroupItem className="ps-0 border-0">
+                  <Link to="#">Modern Sofa</Link>
+                </ListGroupItem>
+                <ListGroupItem className="ps-0 border-0">
+                  <Link to="#">Arm Chair</Link>
+                </ListGroupItem>
+                <ListGroupItem className="ps-0 border-0">
+                  <Link to="#">Smart Watches</Link>
+                </ListGroupItem>
+              </ListGroup>
+            </div>
           </Col>
           <Col lg="2">
-            <h1> Useful Links</h1>
-            <p className="mt-3">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente
-              ipsa temporibus expedita ipsum architecto, facilis inventore
-              praesentium soluta distinctio dignissimos explicabo necessitatibus
-              repellendus aspernatur. Possimus perspiciatis soluta deleniti
-              doloribus illum.
-            </p>
+            <div className="footer__quick-links">
+              <h4 className="footer__title"> Useful Links</h4>
+              <ListGroup>
+                <ListGroupItem className="ps-0 border-0">
+                  <Link to="/shop">Shop</Link>
+                </ListGroupItem>
+                <ListGroupItem className="ps-0 border-0">
+                  <Link to="/cart">Cart</Link>
+                </ListGroupItem>
+                <ListGroupItem className="ps-0 border-0">
+                  <Link to="/login">Login</Link>
+                </ListGroupItem>
+                <ListGroupItem className="ps-0 border-0">
+                  <Link to="#">Privacy Policy</Link>
+                </ListGroupItem>
+              </ListGroup>
+            </div>
           </Col>
           <Col lg="3">
-            <h1>Contact</h1>
-            <p className="mt-3">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente
-              ipsa temporibus expedita ipsum architecto, facilis inventore
-              praesentium soluta distinctio dignissimos explicabo necessitatibus
-              repellendus aspernatur. Possimus perspiciatis soluta deleniti
-              doloribus illum.
+            <div className="footer__quick-links">
+              <h4 className="footer__title">Contact</h4>
+              <ListGroup>
+                <ListGroupItem className="ps-0 border-0">
+                  <span>
+                    <i className="ri-map-pin-line"></i>
+                  </span>
+                  <p>123 Mitchell Street, Brunswick VIC 3056</p>
+                </ListGroupItem>
+                <ListGroupItem className="ps-0 border-0">
+                  <span>
+                    <i className="ri-phone-line"></i>
+                  </span>
+                  <p>+61 4223 07796</p>
+                </ListGroupItem>
+                <ListGroupItem className="ps-0 border-0">
+                  <span>
+                    <i className="ri-mail-line"></i>
+                  </span>
+                  <p>gaurabgurung181@gmail.com</p>
+                </ListGroupItem>
+              </ListGroup>
+            </div>
+          </Col>
+          <Col lg="12" className="text-center">
+            <p className="footer__copyright">
+              Copyright {year} developed by Gaurab Gurung, All rights reserved
             </p>
           </Col>
         </Row>

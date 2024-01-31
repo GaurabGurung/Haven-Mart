@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef, Ref, useEffect } from "react";
 import "../Header/Header.scss";
 
 import logo from "../../assets/images/eco-logo.png";
@@ -16,11 +16,31 @@ const nav_links = [
 ];
 
 const Header = () => {
+  // const headerRef = useRef(null);
+
+  // const stickyHeaderFunc = () => {
+  //   document.addEventListener("scroll", () => {
+  //     if (
+  //       document.body.scrollTop > 80 ||
+  //       document.documentElement.scrollTop > 80
+  //     ) {
+  //       headerRef.current.classList.add("sticky__header");
+  //     } else {
+  //       headerRef.current.classList.add("sticky__header");
+  //     }
+  //   });
+  // };
+
+  // useEffect(() => {
+  //   stickyHeaderFunc();
+  //   return () => window.removeEventListener("scroll", stickyHeaderFunc);
+  // });
+
   return (
-    <header className="header">
-      <Container>
-        <Row>
-          <div className="nav__wrapper">
+    <header className="header sticky__header">
+      <Container className="container ">
+        <Row className="">
+          <div className="nav__wrapper  ">
             <div className="logo">
               <img src={logo} alt="logo" />
               {/* <div> */}
