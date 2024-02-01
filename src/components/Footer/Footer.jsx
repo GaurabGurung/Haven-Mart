@@ -15,7 +15,7 @@ const Footer = () => {
             <div className="logo">
               <h1 className="footer__title">Haven Mart</h1>
             </div>
-            <p className="mt-4">
+            <p className="mt-4 mb-4">
               Discover a world of quality and style at Haven Mart. We curate the
               finest selection of products to elevate your lifestyle. Our
               commitment is to provide unparalleled comfort and sophistication.

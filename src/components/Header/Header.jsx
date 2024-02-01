@@ -36,6 +36,10 @@ const Header = () => {
   //   return () => window.removeEventListener("scroll", stickyHeaderFunc);
   // });
 
+  const menuRef = useRef(null);
+
+  const menuToggle = () => menuRef.current.classList.toggle("active__block");
+
   return (
     <header className="header sticky__header">
       <Container className="container ">
@@ -43,13 +47,12 @@ const Header = () => {
           <div className="nav__wrapper  ">
             <div className="logo">
               <img src={logo} alt="logo" />
-              {/* <div> */}
               <h1>Haven Mart</h1>
-              {/* <p>Since 1993</p> */}
             </div>
 
-            <div className="navigation">
+            <div className="navigation" ref={menuRef} onClick={menuToggle}>
               <ul className="menu">
+                <h1>Haven Mart</h1>
                 {nav_links.map((item, index) => (
                   <li className="nav__item" key={index}>
                     <NavLink to={item.path}>{item.display}</NavLink>
@@ -70,12 +73,12 @@ const Header = () => {
               <span>
                 <motion.img whileTap={{ scale: 1.1 }} src={user_icon} alt="" />
               </span>
-            </div>
 
-            <div className="mobile__menu">
-              <span>
-                <i className="ri-menu-line"></i>
-              </span>
+              <div className="mobile__menu">
+                <span onClick={menuToggle}>
+                  <i className="ri-menu-line"></i>
+                </span>
+              </div>
             </div>
           </div>
         </Row>
