@@ -1,0 +1,20 @@
+.arrow__container {
+  position: relative;
+  .arrow__icon {
+    background: white;
+    position: fixed;
+    bottom: -50%;
+    right: 1rem;
+    padding: 12px;
+    transition: bottom 0.4s, transform 0.4s, background-color 0.4s;
+
+    &:hover {
+      box-shadow: 0 12px 24px rgb(45, 43, 43);
+      transform: translateY(-0.5rem);
+    }
+  }
+
+  .showScroll {
+    bottom: 3rem;
+  }
+}

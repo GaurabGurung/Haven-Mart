@@ -14,6 +14,7 @@ import "../styles/home.scss";
 import LimitedOffer from "../components/LimitedOffer/LimitedOffer";
 import NewArrivals from "../components/NewArrivals/NewArrivals";
 import PopularInCategory from "../components/popularInCategory/popularInCategory";
+import ScrollUp from "../components/scrollUp/ScrollUp";
 
 const Home = () => {
   const year = new Date().getFullYear();
@@ -54,6 +55,7 @@ const Home = () => {
       <LimitedOffer />
       <NewArrivals />
       <PopularInCategory />
+      <ScrollUp />
     </Helmet>
   );
 };

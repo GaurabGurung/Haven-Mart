@@ -1,4 +1,4 @@
-import React, { useRef, Ref, useEffect } from "react";
+import React, { useRef, Ref, useEffect, useState } from "react";
 import "../Header/Header.scss";
 
 import logo from "../../assets/images/eco-logo.png";
@@ -16,29 +16,14 @@ const nav_links = [
 ];
 
 const Header = () => {
-  // const headerRef = useRef(null);
-
-  // const stickyHeaderFunc = () => {
-  //   document.addEventListener("scroll", () => {
-  //     if (
-  //       document.body.scrollTop > 80 ||
-  //       document.documentElement.scrollTop > 80
-  //     ) {
-  //       headerRef.current.classList.add("sticky__header");
-  //     } else {
-  //       headerRef.current.classList.add("sticky__header");
-  //     }
-  //   });
-  // };
-
-  // useEffect(() => {
-  //   stickyHeaderFunc();
-  //   return () => window.removeEventListener("scroll", stickyHeaderFunc);
-  // });
-
   const menuRef = useRef(null);
 
-  const menuToggle = () => menuRef.current.classList.toggle("active__block");
+  const [isSideMenuOpen, setIsSideMenuOpen] = useState(false);
+
+  const menuToggle = () => {
+    menuRef.current.classList.toggle("active__block");
+    setIsSideMenuOpen(!isSideMenuOpen);
+  };
 
   return (
     <header className="header sticky__header">
@@ -47,12 +32,19 @@ const Header = () => {
           <div className="nav__wrapper  ">
             <div className="logo">
               <img src={logo} alt="logo" />
-              <h1>Haven Mart</h1>
+              <h1>
+                Haven <span>Mart</span>
+              </h1>
             </div>
 
             <div className="navigation" ref={menuRef} onClick={menuToggle}>
+              {isSideMenuOpen && <div className="overlay" />}
+
+              <h1>
+                Haven <span>Mart</span>
+              </h1>
+
               <ul className="menu">
-                <h1>Haven Mart</h1>
                 {nav_links.map((item, index) => (
                   <li className="nav__item" key={index}>
                     <NavLink to={item.path}>{item.display}</NavLink>
