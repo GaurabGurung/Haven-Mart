@@ -11,7 +11,7 @@ const Footer = () => {
     <section className="footer">
       <Container>
         <Row>
-          <Col lg="4">
+          <Col lg="5">
             <div className="logo">
               <h1 className="footer__title">Haven Mart</h1>
             </div>
@@ -22,7 +22,7 @@ const Footer = () => {
               Explore our collection for a home that reflects your unique taste.
             </p>
           </Col>
-          <Col lg="3">
+          <Col lg="2">
             <div className="footer__quick-links">
               <h4 className="footer__title"> Top Categories</h4>
               <ListGroup>

@@ -9,6 +9,8 @@ import { motion } from "framer-motion";
 import { Container, Row } from "reactstrap";
 import { NavLink } from "react-router-dom";
 
+import { useSelector } from "react-redux";
+
 const nav_links = [
   { path: "home", display: "Home" },
   { path: "shop", display: "Shop" },
@@ -16,6 +18,7 @@ const nav_links = [
 ];
 
 const Header = () => {
+  const totalQuantity = useSelector((state) => state.cart.totalQuantity);
   const menuRef = useRef(null);
 
   const [isSideMenuOpen, setIsSideMenuOpen] = useState(false);
@@ -60,7 +63,7 @@ const Header = () => {
               </span>
               <span className="cart__icon">
                 <i className="ri-shopping-cart-2-line"></i>
-                <span className="badge">2</span>
+                <span className="badge">{totalQuantity}</span>
               </span>
               <span>
                 <motion.img whileTap={{ scale: 1.1 }} src={user_icon} alt="" />

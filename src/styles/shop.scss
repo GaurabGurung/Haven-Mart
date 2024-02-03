@@ -1,0 +1,29 @@
+.shop__container {
+  .filter__widget .select {
+    padding: 8px 20px;
+    border: 1px solid var(--primary-color);
+    cursor: pointer;
+    border-radius: 5px;
+    background: var(--primary-color);
+    color: #fff;
+
+    &:focus {
+      outline: none;
+    }
+
+    option {
+      background-color: var(--primary-color); // Set the background color
+      color: #fff; // Set the text color
+    }
+  }
+
+  .search__box {
+    width: 100%;
+    padding: 8px 20px;
+    border: 1px solid var(--primary-color);
+    input {
+      border: none;
+      background: transparent;
+    }
+  }
+}
