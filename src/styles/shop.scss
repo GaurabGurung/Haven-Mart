@@ -1,5 +1,6 @@
 .shop__container {
-  .filter__widget .select {
+  min-height: 21vh;
+  .filter__widget select {
     padding: 8px 20px;
     border: 1px solid var(--primary-color);
     cursor: pointer;
@@ -19,11 +20,26 @@
 
   .search__box {
     width: 100%;
-    padding: 8px 20px;
+
     border: 1px solid var(--primary-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     input {
       border: none;
       background: transparent;
+      outline: none;
+      padding: 8px 20px;
+      width: 100%;
+      &:focus {
+        border: none;
+      }
+    }
+    span i {
+      font-size: 26px;
+      padding-right: 10px;
+      color: var(--primary-color);
+      cursor: pointer;
     }
   }
 }

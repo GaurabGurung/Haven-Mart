@@ -21,7 +21,7 @@ const ProductCard = ({ item }) => {
         price: item.price,
       })
     );
-    toast.success(`${item.productName} added to the Cart`);
+    toast.success(`Product added to the Cart`);
   };
 
   return (
