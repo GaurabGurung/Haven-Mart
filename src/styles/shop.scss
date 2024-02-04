@@ -1,5 +1,6 @@
 .shop__container {
-  min-height: 21vh;
+  min-height: 11vh;
+
   .filter__widget select {
     padding: 8px 20px;
     border: 1px solid var(--primary-color);
@@ -41,5 +42,14 @@
       color: var(--primary-color);
       cursor: pointer;
     }
+  }
+}
+.products__container {
+  height: 100%;
+  min-height: 23vh;
+  display: flex;
+  align-items: center;
+  padding-top: 10px;
+  h1 {
   }
 }

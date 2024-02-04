@@ -27,13 +27,13 @@ const ProductCard = ({ item }) => {
   return (
     <Col lg="3" md="6" className="mb-2">
       <div className="product__item">
-        <div className="product__img">
-          <img src={item.imgUrl} alt="" />
-        </div>
+        <Link to={`/shop/${item.id}`}>
+          <div className="product__img">
+            <img src={item.imgUrl} alt="" />
+          </div>
+        </Link>
         <div className="product__info p-2 text-center">
-          <h3 className="product__name">
-            <Link to={`/shop/${item.id}`}>{item.productName}</Link>
-          </h3>
+          <h3 className="product__name">{item.productName}</h3>
           <span>{item.category}</span>
         </div>
         <div className="product__card_btn d-flex align-items-center justify-content-between p-2">

@@ -36,13 +36,13 @@ const Home = () => {
                   create a contemporary ambiance, where every element
                   contributes to a harmonious and sophisticated interior.
                 </p>
-                <motion.button whileTap={{ scale: 1.2 }} className="shop__btn">
+                <motion.button whileTap={{ scale: 1.2 }} className="buy__btn">
                   <Link to="/shop">SHOP NOW</Link>
                 </motion.button>
               </div>
             </Col>
             <Col lg="6" md="6">
-              <div className="herp__img">
+              <div className="hero__img">
                 <img src={HeroImg} alt="" />
               </div>
             </Col>

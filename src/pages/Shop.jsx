@@ -11,34 +11,18 @@ import ScrollUp from "../components/scrollUp/ScrollUp";
 
 const Shop = () => {
   const [productsData, setProductsData] = useState(products);
-  const [searchField, setSearchField] = useState("");
+  const [selectedCategory, setSelectedCategory] = useState("");
 
   const handleFilter = (event) => {
     const filterValue = event.target.value;
 
-    if (filterValue === "sofa") {
+    if (filterValue === "") {
+      setSelectedCategory("");
+      setProductsData(products);
+    } else {
+      setSelectedCategory(filterValue);
       const filteredProducts = products.filter(
-        (item) => item.category === "sofa"
-      );
-      setProductsData(filteredProducts);
-    } else if (filterValue === "chair") {
-      const filteredProducts = products.filter(
-        (item) => item.category === "chair"
-      );
-      setProductsData(filteredProducts);
-    } else if (filterValue === "mobile") {
-      const filteredProducts = products.filter(
-        (item) => item.category === "mobile"
-      );
-      setProductsData(filteredProducts);
-    } else if (filterValue === "watch") {
-      const filteredProducts = products.filter(
-        (item) => item.category === "watch"
-      );
-      setProductsData(filteredProducts);
-    } else if (filterValue === "wireless") {
-      const filteredProducts = products.filter(
-        (item) => item.category === "wireless"
+        (item) => item.category === filterValue
       );
       setProductsData(filteredProducts);
     }
@@ -46,23 +30,32 @@ const Shop = () => {
 
   const handleSearch = (event) => {
     const searchTextInput = event.target.value;
-    const searchProducts = products.filter((item) =>
-      item.productName.toLowerCase().includes(searchField.toLowerCase())
-    );
-    setSearchField(searchTextInput);
-    setProductsData(searchProducts);
+
+    if (searchTextInput === "") {
+      if (selectedCategory !== "") {
+        handleFilter({ target: { value: selectedCategory } });
+      } else {
+        handleFilter({ target: { value: "" } });
+      }
+    } else {
+      const searchProductsWithFilter = productsData.filter((item) =>
+        item.productName.toLowerCase().includes(searchTextInput.toLowerCase())
+      );
+
+      setProductsData(searchProductsWithFilter);
+    }
   };
 
   return (
     <Helmet title="Shop">
-      <CommonSection />
+      <CommonSection title="Products" />
       <section className="shop__container">
         <Container>
           <Row>
             <Col lg="3" md="3">
               <div className="filter__widget">
-                <select onChange={handleFilter}>
-                  <option>Filter By Category</option>
+                <select onChange={handleFilter} id="select">
+                  <option value="">Filter By Category</option>
                   <option value="sofa">Sofa</option>
                   <option value="mobile">Mobile</option>
                   <option value="watch">Watch</option>
@@ -97,11 +90,11 @@ const Shop = () => {
         </Container>
       </section>
 
-      <section>
+      <section className="products__container">
         <Container>
           <Row>
             {productsData.length === 0 ? (
-              <h1>No Products were found !</h1>
+              <h1 className="text-center">No Products were found !</h1>
             ) : (
               <ProductsList data={productsData} />
             )}
