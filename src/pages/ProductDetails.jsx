@@ -4,6 +4,7 @@ import "../styles/ProductDetails.scss";
 import Helmet from "../components/Helmet/Helmet";
 import CommonSection from "../components/UI/common-section";
 import products from "../assets/data/products";
+import ProductsList from "../components/UI/ProductsList";
 
 import { Col, Container, Row } from "react-bootstrap";
 import { useParams } from "react-router-dom";
@@ -24,10 +25,11 @@ const ProductDetails = () => {
     reviews,
     description,
     shortDesc,
+    category,
   } = product;
 
   const allRatings = [1, 2, 3, 4, 5];
-  console.log(rating);
+  const relatedProducts = products.filter((item) => item.category === category);
 
   return (
     <Helmet title={productName}>
@@ -147,6 +149,11 @@ const ProductDetails = () => {
                 )}
               </div>
             </Col>
+
+            <Col lg="12" md="12">
+              <h2>You might also like</h2>
+            </Col>
+            <ProductsList data={relatedProducts} />
           </Row>
         </Container>
       </section>
