@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import "../styles/ProductDetails.scss";
 
 import Helmet from "../components/Helmet/Helmet";
@@ -9,6 +9,9 @@ import ProductsList from "../components/UI/ProductsList";
 import { Col, Container, Row } from "react-bootstrap";
 import { useParams } from "react-router-dom";
 import { motion } from "framer-motion";
+import { useDispatch } from "react-redux";
+import { cartActions } from "../redux/slices/cartSlice";
+import { toast } from "react-toastify";
 
 const ProductDetails = () => {
   const { id } = useParams();
@@ -16,6 +19,10 @@ const ProductDetails = () => {
 
   const [tab, setTab] = useState("desc");
   const [rating, setRating] = useState(null);
+
+  const reviewUser = useRef("");
+  const reviewMsg = useRef("");
+  const dispatch = useDispatch();
 
   const {
     productName,
@@ -30,6 +37,25 @@ const ProductDetails = () => {
 
   const allRatings = [1, 2, 3, 4, 5];
   const relatedProducts = products.filter((item) => item.category === category);
+
+  const submitHandler = (e) => {
+    e.preventdefault();
+
+    const reviewUserName = reviewUser.current.value;
+    const reviewUserMsg = reviewMsg.current.value;
+  };
+
+  const addToCart = () => {
+    dispatch(
+      cartActions.addItem({
+        id,
+        productName,
+        image: imgUrl,
+        price,
+      })
+    );
+    toast.success(`${productName} added to the Cart`);
+  };
 
   return (
     <Helmet title={productName}>
@@ -65,10 +91,17 @@ const ProductDetails = () => {
                     (<span>{avgRating}</span> ratings)
                   </p>
                 </div>
-                <span className="product__price">${price}</span>
+                <div className="d-flex align-items-center gap-5">
+                  <span className="product__price">${price}</span>
+                  <span>Category: {category.toUpperCase()}</span>
+                </div>
                 <p className="mt-3">{shortDesc}</p>
 
-                <motion.button whileTap={{ scale: 1.2 }} className="buy__btn">
+                <motion.button
+                  whileTap={{ scale: 1.2 }}
+                  className="buy__btn"
+                  onClick={addToCart}
+                >
                   Add to Cart
                 </motion.button>
               </div>
@@ -117,11 +150,15 @@ const ProductDetails = () => {
                       {/* Reviews and Description Section */}
                       <div className="review__form">
                         <h4>Leave your experience</h4>
-                        <form action="">
+                        <form action="" onSubmit={submitHandler}>
                           <div className="form__group">
-                            <input type="text" placeholder="Enter your name" />
+                            <input
+                              type="text"
+                              placeholder="Enter your name"
+                              ref={reviewUser}
+                            />
                           </div>
-                          <div className="form__group d-flex align-items-center gap-5">
+                          <div className="form__group d-flex align-items-center gap-4">
                             {allRatings.map((star, index) => (
                               <span key={index}>
                                 {star}
@@ -137,6 +174,7 @@ const ProductDetails = () => {
                               rows={4}
                               type="text"
                               placeholder="Type your Review"
+                              ref={reviewMsg}
                             />
                           </div>
                           <button className="buy__btn" type="submit">
@@ -150,8 +188,9 @@ const ProductDetails = () => {
               </div>
             </Col>
 
-            <Col lg="12" md="12">
-              <h2>You might also like</h2>
+            {/* You might also like section */}
+            <Col lg="12" md="12" className="mt-5">
+              <h2 className="related__title">You might also like</h2>
             </Col>
             <ProductsList data={relatedProducts} />
           </Row>

@@ -40,8 +40,10 @@ const Header = () => {
               </h1>
             </div>
 
-            <div className="navigation" ref={menuRef} onClick={menuToggle}>
-              {isSideMenuOpen && <div className="overlay" />}
+            <div className="navigation" ref={menuRef}>
+              {isSideMenuOpen && (
+                <div className="overlay" onClick={menuToggle} />
+              )}
 
               <h1>
                 Haven <span>Mart</span>
@@ -50,7 +52,9 @@ const Header = () => {
               <ul className="menu">
                 {nav_links.map((item, index) => (
                   <li className="nav__item" key={index}>
-                    <NavLink to={item.path}>{item.display}</NavLink>
+                    <NavLink to={item.path} onClick={menuToggle}>
+                      {item.display}
+                    </NavLink>
                   </li>
                 ))}
               </ul>

@@ -43,6 +43,19 @@
       cursor: pointer;
     }
   }
+
+  @media screen and (max-width: 991px) {
+    .filter__widget {
+      margin-bottom: 30px;
+
+      select {
+        padding: 7px 20px;
+        font-size: 0.9rem;
+      }
+    }
+  }
+  @media screen and (max-width: 799) {
+  }
 }
 .products__container {
   height: 100%;

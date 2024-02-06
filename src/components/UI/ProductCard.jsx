@@ -3,7 +3,8 @@ import "../../styles/product-card.scss";
 
 import { motion } from "framer-motion";
 import { Col } from "reactstrap";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+
 import { toast } from "react-toastify";
 
 import { useDispatch } from "react-redux";
@@ -11,6 +12,7 @@ import { cartActions } from "../../redux/slices/cartSlice";
 
 const ProductCard = ({ item }) => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const addItemToCart = () => {
     dispatch(
@@ -24,14 +26,18 @@ const ProductCard = ({ item }) => {
     toast.success(`Product added to the Cart`);
   };
 
+  const navigateToProductPage = () => {
+    navigate(`/shop/${item.id}`);
+    window.scrollTo(0, 0);
+  };
+
   return (
     <Col lg="3" md="6" className="mb-2">
       <div className="product__item">
-        <Link to={`/shop/${item.id}`}>
-          <div className="product__img">
-            <img src={item.imgUrl} alt="" />
-          </div>
-        </Link>
+        <div className="product__img" onClick={navigateToProductPage}>
+          <img src={item.imgUrl} alt="" />
+        </div>
+
         <div className="product__info p-2 text-center">
           <h3 className="product__name">{item.productName}</h3>
           <span>{item.category}</span>
