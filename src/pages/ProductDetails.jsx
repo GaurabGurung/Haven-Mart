@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import "../styles/ProductDetails.scss";
 
 import Helmet from "../components/Helmet/Helmet";
@@ -43,6 +43,8 @@ const ProductDetails = () => {
 
     const reviewUserName = reviewUser.current.value;
     const reviewUserMsg = reviewMsg.current.value;
+
+    console.log(reviewMsg, reviewUserName, rating);
   };
 
   const addToCart = () => {
@@ -56,6 +58,10 @@ const ProductDetails = () => {
     );
     toast.success(`${productName} added to the Cart`);
   };
+
+  useEffect(() => {
+    window.scroll(0, 0);
+  }, [product]);
 
   return (
     <Helmet title={productName}>
@@ -158,14 +164,11 @@ const ProductDetails = () => {
                               ref={reviewUser}
                             />
                           </div>
-                          <div className="form__group d-flex align-items-center gap-4">
+                          <div className="form__group d-flex align-items-center gap-4 rating__group">
                             {allRatings.map((star, index) => (
-                              <span key={index}>
+                              <span key={index} onClick={() => setRating(star)}>
                                 {star}
-                                <i
-                                  className="ri-star-s-fill"
-                                  onClick={() => setRating(star)}
-                                />
+                                <i className="ri-star-s-fill" />
                               </span>
                             ))}
                           </div>

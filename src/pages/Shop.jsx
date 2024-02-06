@@ -46,6 +46,10 @@ const Shop = () => {
     }
   };
 
+  useEffect(() => {
+    window.scroll(0, 0);
+  }, [products]);
+
   return (
     <Helmet title="Shop">
       <CommonSection title="Products" />
