@@ -7,7 +7,7 @@ import user_icon from "../../assets/images/user-icon.png";
 import { motion } from "framer-motion";
 
 import { Container, Row } from "reactstrap";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 
 import { useSelector } from "react-redux";
 
@@ -20,6 +20,12 @@ const nav_links = [
 const Header = () => {
   const totalQuantity = useSelector((state) => state.cart.totalQuantity);
   const menuRef = useRef(null);
+
+  const navigate = useNavigate();
+
+  const navigateToCart = () => {
+    navigate("/cart");
+  };
 
   const [isSideMenuOpen, setIsSideMenuOpen] = useState(false);
 
@@ -66,7 +72,10 @@ const Header = () => {
                 <span className="badge">1</span>
               </span>
               <span className="cart__icon">
-                <i className="ri-shopping-cart-2-line"></i>
+                <i
+                  className="ri-shopping-cart-2-line"
+                  onClick={navigateToCart}
+                ></i>
                 <span className="badge">{totalQuantity}</span>
               </span>
               <span>

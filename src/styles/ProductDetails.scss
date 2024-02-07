@@ -95,9 +95,13 @@
         }
       }
       span {
-        color: coral;
         font-weight: 500;
         cursor: pointer;
+        color: gray;
+      }
+      .active_star {
+        color: coral;
+        font-size: 1.5rem;
       }
     }
   }

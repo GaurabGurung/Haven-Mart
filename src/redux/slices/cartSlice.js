@@ -22,7 +22,7 @@ const cartSlice = createSlice({
         state.cartItems.push({
           id: newItem.id,
           productName: newItem.productName,
-          image: newItem.imgUrl,
+          imgUrl: newItem.imgUrl,
           price: newItem.price,
           quantity: 1,
           totalPrice: newItem.price,
@@ -38,6 +38,18 @@ const cartSlice = createSlice({
         0
       );
     },
+  },
+  deleteItem: (state, action) => {
+    const currentItem = action.payload;
+    const existingItem = state.cartItems.find(
+      (item) => item.id === currentItem.id
+    );
+
+    if (existingItem) {
+      state.cartItems.pop(currentItem);
+    } else {
+      return;
+    }
   },
 });
 

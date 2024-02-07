@@ -20,8 +20,6 @@ const ProductDetails = () => {
   const [tab, setTab] = useState("desc");
   const [rating, setRating] = useState(null);
 
-  const reviewUser = useRef("");
-  const reviewMsg = useRef("");
   const dispatch = useDispatch();
 
   const {
@@ -38,13 +36,25 @@ const ProductDetails = () => {
   const allRatings = [1, 2, 3, 4, 5];
   const relatedProducts = products.filter((item) => item.category === category);
 
+  const reviewUser = useRef("");
+  const reviewMsg = useRef("");
+
   const submitHandler = (e) => {
-    e.preventdefault();
+    e.preventDefault();
 
     const reviewUserName = reviewUser.current.value;
     const reviewUserMsg = reviewMsg.current.value;
 
-    console.log(reviewMsg, reviewUserName, rating);
+    const reviewObj = {
+      userName: reviewUserName,
+      text: reviewUserMsg,
+      rating,
+    };
+
+    toast.success(`Thank you for your review ${reviewObj.userName}`);
+    setRating(null);
+    reviewUser.current.value = "";
+    reviewMsg.current.value = "";
   };
 
   const addToCart = () => {
@@ -56,7 +66,7 @@ const ProductDetails = () => {
         price,
       })
     );
-    toast.success(`${productName} added to the Cart`);
+    toast.success(`Product added to Cart`);
   };
 
   useEffect(() => {
@@ -146,7 +156,7 @@ const ProductDetails = () => {
                       <ul>
                         {reviews.map((item, index) => (
                           <li key={index}>
-                            <h6>{item.name}</h6>
+                            <h6>{item.userName}</h6>
                             <span>{item.rating} ( rating )</span>
                             <p>{item.text}</p>
                           </li>
@@ -162,14 +172,22 @@ const ProductDetails = () => {
                               type="text"
                               placeholder="Enter your name"
                               ref={reviewUser}
+                              required
                             />
                           </div>
                           <div className="form__group d-flex align-items-center gap-4 rating__group">
                             {allRatings.map((star, index) => (
-                              <span key={index} onClick={() => setRating(star)}>
+                              <motion.span
+                                className={` ${
+                                  rating === star ? "active_star" : ""
+                                }`}
+                                whileTap={{ scale: 1.2 }}
+                                key={index}
+                                onClick={() => setRating(star)}
+                              >
                                 {star}
                                 <i className="ri-star-s-fill" />
-                              </span>
+                              </motion.span>
                             ))}
                           </div>
                           <div className="form__group">
@@ -178,11 +196,16 @@ const ProductDetails = () => {
                               type="text"
                               placeholder="Type your Review"
                               ref={reviewMsg}
+                              required
                             />
                           </div>
-                          <button className="buy__btn" type="submit">
+                          <motion.button
+                            whileTap={{ scale: 1.2 }}
+                            className="buy__btn"
+                            type="submit"
+                          >
                             Submit
-                          </button>
+                          </motion.button>
                         </form>
                       </div>
                     </div>

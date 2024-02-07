@@ -19,7 +19,7 @@ const ProductCard = ({ item }) => {
       cartActions.addItem({
         id: item.id,
         productName: item.productName,
-        image: item.imgUrl,
+        imgUrl: item.imgUrl,
         price: item.price,
       })
     );
