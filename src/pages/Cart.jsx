@@ -9,8 +9,6 @@ import { motion } from "framer-motion";
 import { cartActions } from "../redux/slices/cartSlice";
 import { useDispatch, useSelector } from "react-redux";
 
-import tdImg from "../assets/images/arm-chair-01.jpg";
-
 const Cart = () => {
   const cartItems = useSelector((state) => state.cart.cartItems);
 

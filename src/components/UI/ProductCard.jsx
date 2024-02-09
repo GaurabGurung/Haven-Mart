@@ -26,6 +26,8 @@ const ProductCard = ({ item }) => {
     toast.success(`Product added to the Cart`);
   };
 
+
+
   const navigateToProductPage = () => {
     navigate(`/shop/${item.id}`);
     window.scrollTo(0, 0);

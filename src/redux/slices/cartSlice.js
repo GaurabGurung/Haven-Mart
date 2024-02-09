@@ -39,18 +39,18 @@ const cartSlice = createSlice({
       );
     },
   },
-  deleteItem: (state, action) => {
-    const currentItem = action.payload;
-    const existingItem = state.cartItems.find(
-      (item) => item.id === currentItem.id
-    );
+  // deleteItem: (state, action) => {
+  //   const currentItem = action.payload;
+  //   const existingItem = state.cartItems.find(
+  //     (item) => item.id === currentItem.id
+  //   );
 
-    if (existingItem) {
-      state.cartItems.pop(currentItem);
-    } else {
-      return;
-    }
-  },
+  //   if (existingItem) {
+  //     state.cartItems.pop(currentItem);
+  //   } else {
+  //     return;
+  //   }
+  // },
 });
 
 export const cartActions = cartSlice.actions;
