@@ -101,12 +101,9 @@ const Cart = () => {
                     <span>$ {cartTotalPrice}</span>
                   </div>
                   <p>taxes and shipping will be calculated on checkout</p>
-                  <button
-                    className="buy__btn"
-                    onClick={() => navigate("/shop")}
-                  >
-                    Checkout
-                  </button>
+                  <Link to="/check-out">
+                    <button className="buy__btn">Checkout</button>
+                  </Link>
                   <Link to="/shop">
                     <button className="buy__btn">Continue Shopping</button>
                   </Link>

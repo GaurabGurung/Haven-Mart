@@ -17,8 +17,10 @@
     .subtract {
       border: solid 1px grey;
       background: rgb(242, 239, 239);
+      border-radius: 99px;
       &:hover {
-        background: rgb(167, 165, 165);
+        background: rgb(69, 67, 67);
+        color: #fff;
       }
     }
     span {
@@ -27,10 +29,17 @@
   }
   .delete__icon {
     padding-left: 20px;
+    &:hover {
+      color: red;
+    }
   }
 }
 
 .subTotal__container {
+  h6 {
+    font-size: 1.5rem;
+    font-weight: 600;
+  }
   .total {
     margin-bottom: 15px;
 
@@ -46,6 +55,10 @@
     width: 100%;
     margin: 10px 0;
     padding: 10px;
+    background-color: #000;
+    &:hover {
+      background-color: #312f2f;
+    }
   }
 }
 
@@ -63,5 +76,9 @@
   .buy__btn {
     margin-top: 30px;
     border-radius: 999px;
+    background-color: #000;
+    &:hover {
+      background-color: #312f2f;
+    }
   }
 }
