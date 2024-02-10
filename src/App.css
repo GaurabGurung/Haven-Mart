@@ -33,6 +33,9 @@
   margin-top: 40px;
   width: 200px;
 }
+.buy__btn:hover {
+  background: #3a5477;
+}
 
 body {
   font-family: "Montserrat", sans-serif;
@@ -76,4 +79,9 @@ img {
 }
 section {
   padding: 60px 0px;
+}
+#root {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
 }

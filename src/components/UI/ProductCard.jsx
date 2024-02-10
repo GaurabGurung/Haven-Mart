@@ -23,10 +23,8 @@ const ProductCard = ({ item }) => {
         price: item.price,
       })
     );
-    toast.success(`Product added to the Cart`);
+    toast.success(`Product added Successfully`);
   };
-
-
 
   const navigateToProductPage = () => {
     navigate(`/shop/${item.id}`);
@@ -38,6 +36,7 @@ const ProductCard = ({ item }) => {
       <div className="product__item">
         <div className="product__img" onClick={navigateToProductPage}>
           <img src={item.imgUrl} alt="" />
+          <i className="ri-external-link-line link__icon" />
         </div>
 
         <div className="product__info p-2 text-center">

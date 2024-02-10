@@ -66,7 +66,7 @@ const ProductDetails = () => {
         price,
       })
     );
-    toast.success(`Product added to Cart`);
+    toast.success(`Product added Successfully`);
   };
 
   useEffect(() => {

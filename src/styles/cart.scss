@@ -1,4 +1,7 @@
 .table {
+  .table__heading {
+    padding-left: 10px;
+  }
   tr {
     td img {
       width: 100px;
@@ -8,5 +11,57 @@
     td i {
       cursor: pointer;
     }
+  }
+  .quantity {
+    .add,
+    .subtract {
+      border: solid 1px grey;
+      background: rgb(242, 239, 239);
+      &:hover {
+        background: rgb(167, 165, 165);
+      }
+    }
+    span {
+      padding: 0 10px;
+    }
+  }
+  .delete__icon {
+    padding-left: 20px;
+  }
+}
+
+.subTotal__container {
+  .total {
+    margin-bottom: 15px;
+
+    span {
+      font-size: 1.5rem;
+      font-weight: 700;
+    }
+  }
+  p {
+    margin-bottom: 20px;
+  }
+  .buy__btn {
+    width: 100%;
+    margin: 10px 0;
+    padding: 10px;
+  }
+}
+
+.empty__cart {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  // margin-top: 10vh;
+
+  img {
+    height: 200px;
+    width: 200px;
+  }
+  .buy__btn {
+    margin-top: 30px;
+    border-radius: 999px;
   }
 }

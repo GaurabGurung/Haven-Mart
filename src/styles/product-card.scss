@@ -1,5 +1,4 @@
 .product__item {
-  cursor: pointer;
   margin-top: 30px;
 
   &:hover {
@@ -9,13 +8,39 @@
     }
     i {
       display: inline;
+      &:hover {
+        color: #3a5477;
+        cursor: pointer;
+      }
     }
   }
 
   .product__img {
     overflow: hidden;
+    position: relative;
+    cursor: pointer;
+
+    &:hover {
+      background: linear-gradient(rgba(209, 26, 26, 0.629));
+    }
+
+    .link__icon {
+      position: absolute;
+      z-index: 20;
+      top: 0;
+      right: 0;
+      display: none;
+      &:hover {
+        display: block;
+        color: purple;
+      }
+    }
     img {
       transition: transform 0.3s ease;
+      &:hover + .link__icon {
+        display: block;
+        cursor: pointer;
+      }
     }
   }
 

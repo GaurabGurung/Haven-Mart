@@ -325,7 +325,7 @@ const products = [
     productName: "Sakarias Armchair",
     imgUrl: productImg10,
     category: "chair",
-    price: 99,
+    price: 10,
     shortDesc:
       "Experience comfort and style with the Sakarias Armchair. A perfect addition to your living space.",
     description:

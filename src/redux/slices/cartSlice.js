@@ -38,19 +38,59 @@ const cartSlice = createSlice({
         0
       );
     },
-  },
-  // deleteItem: (state, action) => {
-  //   const currentItem = action.payload;
-  //   const existingItem = state.cartItems.find(
-  //     (item) => item.id === currentItem.id
-  //   );
+    deleteItem: (state, action) => {
+      const selectedItem = action.payload;
+      const existingItem = state.cartItems.find(
+        (item) => item.id === selectedItem.id
+      );
 
-  //   if (existingItem) {
-  //     state.cartItems.pop(currentItem);
-  //   } else {
-  //     return;
-  //   }
-  // },
+      if (existingItem) {
+        state.cartItems = state.cartItems.filter(
+          (item) => item.id !== existingItem.id
+        );
+        state.totalQuantity = state.totalQuantity - existingItem.quantity;
+      }
+      state.totalAmount = state.cartItems.reduce(
+        (total, item) => total + Number(item.quantity) * Number(item.price),
+        0
+      );
+    },
+    addQuantity: (state, action) => {
+      const newItem = action.payload;
+      const existingItem = state.cartItems.find(
+        (item) => item.id === newItem.id
+      );
+      if (existingItem) {
+        const selectedItem = state.cartItems.find(
+          (item) => item.id === existingItem.id
+        );
+        selectedItem.quantity++;
+        state.totalQuantity++;
+      }
+      state.totalAmount = state.cartItems.reduce(
+        (total, item) => total + Number(item.quantity) * Number(item.price),
+        0
+      );
+    },
+    subtractQuantity: (state, action) => {
+      const newItem = action.payload;
+      const existingItem = state.cartItems.find(
+        (item) => item.id === newItem.id
+      );
+      if (existingItem.quantity <= 1) {
+        state.cartItems = state.cartItems.filter(
+          (item) => item.id !== existingItem.id
+        );
+      } else {
+        existingItem.quantity--;
+        state.totalQuantity--;
+      }
+      state.totalAmount = state.cartItems.reduce(
+        (total, item) => total + Number(item.quantity) * Number(item.price),
+        0
+      );
+    },
+  },
 });
 
 export const cartActions = cartSlice.actions;
