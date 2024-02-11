@@ -1,12 +1,32 @@
-import React from "react";
+import React, { useContext } from "react";
 import "../Footer/Footer.scss";
 
-import logo from "../../assets/images/eco-logo.png";
 import { ListGroup, Col, Container, Row, ListGroupItem } from "reactstrap";
 import { Link } from "react-router-dom";
+import { CategoryContext } from "../../context/category.context";
 
 const Footer = () => {
   const year = new Date().getFullYear();
+  const { setCategoryValue } = useContext(CategoryContext);
+
+  const setCategory = (linkTo) => {
+    switch (linkTo) {
+      case "mobile":
+        setCategoryValue("mobile");
+        break;
+      case "sofa":
+        setCategoryValue("sofa");
+        break;
+      case "chair":
+        setCategoryValue("chair");
+        break;
+      case "watch":
+        setCategoryValue("watch");
+        break;
+      default:
+        console.log("Unknown link clicked");
+    }
+  };
   return (
     <section className="footer">
       <Container>
@@ -27,16 +47,24 @@ const Footer = () => {
               <h4 className="footer__title"> Top Categories</h4>
               <ListGroup>
                 <ListGroupItem className="ps-0 border-0">
-                  <Link to="#">Mobile Phones</Link>
+                  <Link to={"/shop"} onClick={() => setCategory("mobile")}>
+                    Mobile Phones
+                  </Link>
                 </ListGroupItem>
                 <ListGroupItem className="ps-0 border-0">
-                  <Link to="#">Modern Sofa</Link>
+                  <Link to={"/shop"} onClick={() => setCategory("sofa")}>
+                    Modern Sofa
+                  </Link>
                 </ListGroupItem>
                 <ListGroupItem className="ps-0 border-0">
-                  <Link to="#">Arm Chair</Link>
+                  <Link to={"/shop"} onClick={() => setCategory("chair")}>
+                    Arm Chair
+                  </Link>
                 </ListGroupItem>
                 <ListGroupItem className="ps-0 border-0">
-                  <Link to="#">Smart Watches</Link>
+                  <Link to={"/shop"} onClick={() => setCategory("watch")}>
+                    Smart Watches
+                  </Link>
                 </ListGroupItem>
               </ListGroup>
             </div>

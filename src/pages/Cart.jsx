@@ -72,12 +72,12 @@ const Cart = () => {
                           <td>{item.productName}</td>
                           <td className="quantity">
                             <i
-                              class="ri-subtract-line subtract"
+                              className="ri-subtract-line subtract"
                               onClick={() => subtractProductQuantity(item)}
                             />
                             <span>{item.quantity}</span>
                             <i
-                              class="ri-add-line add"
+                              className="ri-add-line add"
                               onClick={() => addProductQuantity(item)}
                             />
                           </td>

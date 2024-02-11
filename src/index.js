@@ -12,29 +12,32 @@ import { Provider } from "react-redux";
 
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { CategoryProvider } from "./context/category.context";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <ProductsProvider>
-      <BrowserRouter>
-        <Provider store={store}>
-          <ToastContainer
-            position="top-right"
-            autoClose={2000}
-            hideProgressBar={true}
-            newestOnTop={false}
-            closeOnClick
-            rtl={false}
-            pauseOnFocusLoss
-            draggable
-            pauseOnHover
-            theme="dark"
-          />
+      <CategoryProvider>
+        <BrowserRouter>
+          <Provider store={store}>
+            <ToastContainer
+              position="top-right"
+              autoClose={2000}
+              hideProgressBar={true}
+              newestOnTop={false}
+              closeOnClick
+              rtl={false}
+              pauseOnFocusLoss
+              draggable
+              pauseOnHover
+              theme="dark"
+            />
 
-          <App />
-        </Provider>
-      </BrowserRouter>
+            <App />
+          </Provider>
+        </BrowserRouter>
+      </CategoryProvider>
     </ProductsProvider>
   </React.StrictMode>
 );

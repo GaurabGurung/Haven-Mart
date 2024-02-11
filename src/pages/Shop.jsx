@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "../styles/shop.scss";
 
 import CommonSection from "../components/UI/common-section";
@@ -8,10 +8,14 @@ import { Col, Container, Row } from "reactstrap";
 import products from "../assets/data/products";
 import ProductsList from "../components/UI/ProductsList";
 import ScrollUp from "../components/scrollUp/ScrollUp";
+import { CategoryContext } from "../context/category.context";
 
 const Shop = () => {
+  const { categoryValue, setCategoryValue } = useContext(CategoryContext);
+
   const [productsData, setProductsData] = useState(products);
   const [selectedCategory, setSelectedCategory] = useState("");
+  const [sortOption, setSortOption] = useState("");
 
   const handleFilter = (event) => {
     const filterValue = event.target.value;
@@ -25,6 +29,13 @@ const Shop = () => {
         (item) => item.category === filterValue
       );
       setProductsData(filteredProducts);
+    }
+
+    // Handle sorting based on sortOption
+    if (sortOption === "ascending") {
+      setProductsData([...productsData].sort((a, b) => a.price - b.price));
+    } else if (sortOption === "descending") {
+      setProductsData([...productsData].sort((a, b) => b.price - a.price));
     }
   };
 
@@ -46,9 +57,22 @@ const Shop = () => {
     }
   };
 
+  const handleSort = (event) => {
+    const sortValue = event.target.value;
+    setSortOption(sortValue);
+
+    // Reapply filtering with the new sorting option
+    handleFilter({ target: { value: selectedCategory } });
+  };
+
   useEffect(() => {
     window.scroll(0, 0);
-  }, [products]);
+
+    if (categoryValue !== "" && categoryValue !== null) {
+      handleFilter({ target: { value: categoryValue } });
+      setCategoryValue(null);
+    }
+  }, [products, categoryValue]);
 
   return (
     <Helmet title="Shop">
@@ -70,9 +94,9 @@ const Shop = () => {
             </Col>
             <Col lg="3" md="6" sm="6">
               <div className="filter__widget">
-                <select>
-                  <option>Filter By</option>
-                  <option value="assending">Assending</option>
+                <select onChange={handleSort}>
+                  <option value="">Filter By</option>
+                  <option value="ascending">Ascending</option>
                   <option value="descending">Descending</option>
                 </select>
               </div>

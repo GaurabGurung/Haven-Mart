@@ -57,8 +57,12 @@
     padding: 10px;
     background-color: #000;
     &:hover {
-      background-color: #312f2f;
+      background-color: #545252;
     }
+  }
+
+  @media screen and (max-width: 991px) {
+    margin-top: 50px;
   }
 }
 
@@ -78,7 +82,7 @@
     border-radius: 999px;
     background-color: #000;
     &:hover {
-      background-color: #312f2f;
+      background-color: #545252;
     }
   }
 }
