@@ -15,7 +15,6 @@ const Shop = () => {
 
   const [productsData, setProductsData] = useState(products);
   const [selectedCategory, setSelectedCategory] = useState("");
-  const [sortOption, setSortOption] = useState("");
 
   const handleFilter = (event) => {
     const filterValue = event.target.value;
@@ -29,13 +28,6 @@ const Shop = () => {
         (item) => item.category === filterValue
       );
       setProductsData(filteredProducts);
-    }
-
-    // Handle sorting based on sortOption
-    if (sortOption === "ascending") {
-      setProductsData([...productsData].sort((a, b) => a.price - b.price));
-    } else if (sortOption === "descending") {
-      setProductsData([...productsData].sort((a, b) => b.price - a.price));
     }
   };
 
@@ -55,14 +47,6 @@ const Shop = () => {
 
       setProductsData(searchProductsWithFilter);
     }
-  };
-
-  const handleSort = (event) => {
-    const sortValue = event.target.value;
-    setSortOption(sortValue);
-
-    // Reapply filtering with the new sorting option
-    handleFilter({ target: { value: selectedCategory } });
   };
 
   useEffect(() => {
@@ -94,9 +78,9 @@ const Shop = () => {
             </Col>
             <Col lg="3" md="6" sm="6">
               <div className="filter__widget">
-                <select onChange={handleSort}>
-                  <option value="">Filter By</option>
-                  <option value="ascending">Ascending</option>
+                <select>
+                  <option>Filter By</option>
+                  <option value="assending">Assending</option>
                   <option value="descending">Descending</option>
                 </select>
               </div>

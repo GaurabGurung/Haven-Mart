@@ -37,6 +37,7 @@
   background: #3a5477;
 }
 
+html,
 body {
   font-family: "Montserrat", sans-serif;
   display: flex;
@@ -84,4 +85,5 @@ section {
   flex: 1;
   display: flex;
   flex-direction: column;
+  min-height: 100vh;
 }

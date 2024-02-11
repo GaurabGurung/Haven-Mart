@@ -1,0 +1,43 @@
+.signup__container {
+  .row {
+    min-height: 40vh;
+    .auth__form {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 50px;
+      background: var(--primary-color);
+
+      border-radius: 10px;
+      .form__group {
+        width: 100%;
+        input {
+          padding: 8px 20px;
+          width: 100%;
+        }
+      }
+      .buy__btn {
+        background: #fff;
+        color: #000;
+        margin-bottom: 20px;
+      }
+      a {
+        color: #ffffffd6;
+      }
+    }
+    .uploadPic {
+      margin-top: 25px;
+      display: flex;
+
+      align-items: center;
+      width: 100%;
+      justify-content: space-around;
+      color: #fff;
+
+      input[type="file"] {
+        cursor: pointer;
+      }
+    }
+  }
+}
