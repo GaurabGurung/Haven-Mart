@@ -7,16 +7,24 @@ import Home from "../pages/Home";
 import Shop from "../pages/Shop";
 import Cart from "../pages/Cart";
 import CheckOut from "../pages/CheckOut";
+import ProtectedRoute from "../routers/ProtectedRoute";
 
 const Routers = () => {
   return (
     <Routes>
       <Route path="/" element={<Navigate to="home" />} />
-      <Route path="home" index element={<Home />} />
+      <Route path="home" element={<Home />} />
       <Route path="shop" element={<Shop />} />
       <Route path="shop/:id" element={<ProductDetails />} />
       <Route path="cart" element={<Cart />} />
-      <Route path="check-out" element={<CheckOut />} />
+      <Route
+        path="check-out"
+        element={
+          <ProtectedRoute>
+            <CheckOut />
+          </ProtectedRoute>
+        }
+      />
       <Route path="login" element={<Login />} />
       <Route path="signup" element={<Signup />} />
     </Routes>

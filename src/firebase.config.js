@@ -1,14 +1,9 @@
-import { getAuth, updateProfile } from "firebase/auth";
+import { getAuth } from "firebase/auth";
 
 import { initializeApp } from "firebase/app";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
-import {
-  getDownloadURL,
-  getStorage,
-  ref,
-  uploadBytesResumable,
-} from "firebase/storage";
+import { getStorage } from "firebase/storage";
 
 const firebaseConfig = {
   apiKey: "AIzaSyAeSY0MvZ88RHUeI_XNlArL9c1E1S5iVp0",
