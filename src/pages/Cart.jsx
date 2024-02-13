@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "../styles/cart.scss";
 
 import Helmet from "../components/Helmet/Helmet";
@@ -8,7 +8,7 @@ import { Col, Container, Row } from "reactstrap";
 import { motion } from "framer-motion";
 import { cartActions } from "../redux/slices/cartSlice";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 import emptyCart from "../assets/images/empty_cart.png";
 
@@ -29,7 +29,9 @@ const Cart = () => {
     dispatch(cartActions.subtractQuantity(item));
   };
 
-  const navigate = useNavigate();
+  useEffect(() => {
+    window.scroll(0, 0);
+  }, []);
 
   return (
     <Helmet title="Cart">
@@ -52,7 +54,7 @@ const Cart = () => {
               </div>
             ) : (
               <>
-                <Col lg="9">
+                <Col lg="9" md="3">
                   <table className="table bordered">
                     <thead>
                       <tr>

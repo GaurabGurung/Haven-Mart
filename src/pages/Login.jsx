@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "../styles/login.scss";
 
 import Helmet from "../components/Helmet/Helmet";
@@ -9,6 +9,10 @@ import { Link } from "react-router-dom";
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+  useEffect(() => {
+    window.scroll(0, 0);
+  }, []);
   return (
     <Helmet title="Login">
       <section className="login__container">

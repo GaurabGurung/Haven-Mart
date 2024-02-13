@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "../styles/signup.scss";
 import Spinner from "../components/UI/spinner";
 
@@ -25,6 +25,10 @@ const SignUp = () => {
   const [loading, setLoading] = useState(false);
 
   const navigate = useNavigate();
+
+  useEffect(() => {
+    window.scroll(0, 0);
+  }, []);
 
   const handleSignUp = async (e) => {
     e.preventDefault();

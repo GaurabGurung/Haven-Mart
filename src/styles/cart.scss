@@ -1,12 +1,21 @@
 .table {
   .table__heading {
     padding-left: 10px;
+
+    @media screen and (max-width: 768px) {
+      padding: 0;
+    }
   }
   tr {
     td img {
       width: 100px;
       height: 100px;
       object-fit: cover;
+
+      @media screen and (max-width: 768px) {
+        width: 70px;
+        height: 70px;
+      }
     }
     td i {
       cursor: pointer;
