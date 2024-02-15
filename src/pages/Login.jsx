@@ -29,6 +29,7 @@ const Login = () => {
       );
 
       const { user } = userCredential;
+      console.log(user);
 
       setLoading(false);
 

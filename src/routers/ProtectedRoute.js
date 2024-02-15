@@ -11,10 +11,10 @@ const ProtectedRoute = ({ children }) => {
   // }, []);
 
   if (currentUser === null) {
-    console.log("Redirecting to login");
+    // console.log("Redirecting to login");
     return <Navigate to="/login" />;
   } else {
-    console.log("Rendering children");
+    // console.log("Rendering children");
     return children;
   }
 };

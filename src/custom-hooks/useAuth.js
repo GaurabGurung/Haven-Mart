@@ -3,7 +3,7 @@ import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "../firebase.config";
 
 const useAuth = () => {
-  const [currentUser, setCurrentUser] = useState(null);
+  const [currentUser, setCurrentUser] = useState({});
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -11,6 +11,7 @@ const useAuth = () => {
       if (user) {
         setCurrentUser(user);
         setLoading(false);
+        // console.log("rendering unsubscribe");
       } else {
         setCurrentUser(null);
       }
@@ -21,9 +22,9 @@ const useAuth = () => {
         unsubscribe();
       }
     };
-  }, []);
-  console.log("currentUser:", currentUser);
-  console.log("loading:", loading);
+  });
+  // console.log("currentUser:", currentUser);
+  // console.log("loading:", loading);
 
   return { currentUser, loading };
 };

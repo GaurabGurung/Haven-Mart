@@ -7,9 +7,12 @@ import user_icon from "../../assets/images/user-icon.png";
 import { motion } from "framer-motion";
 
 import { Container, Row } from "reactstrap";
-import { NavLink, useNavigate } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 
 import { useSelector } from "react-redux";
+import useAuth from "../../custom-hooks/useAuth";
+import { signOut } from "firebase/auth";
+import { auth } from "../../firebase.config";
 
 const nav_links = [
   { path: "home", display: "Home" },
@@ -20,7 +23,7 @@ const nav_links = [
 const Header = () => {
   const totalQuantity = useSelector((state) => state.cart.totalQuantity);
   const menuRef = useRef(null);
-
+  const profileActionRef = useRef(null);
   const navigate = useNavigate();
 
   const navigateToCart = () => {
@@ -28,11 +31,17 @@ const Header = () => {
   };
 
   const [isSideMenuOpen, setIsSideMenuOpen] = useState(false);
+  const { currentUser } = useAuth();
 
   const menuToggle = () => {
     menuRef.current.classList.toggle("active__block");
     setIsSideMenuOpen(!isSideMenuOpen);
   };
+
+  const toggleProfileActions = () =>
+    profileActionRef.current.classList.toggle("show__profileActions");
+
+  const handleSignOut = () => signOut(auth);
 
   return (
     <header className="header sticky__header">
@@ -78,9 +87,29 @@ const Header = () => {
                 ></i>
                 <span className="badge">{totalQuantity}</span>
               </span>
-              <span>
-                <motion.img whileTap={{ scale: 1.1 }} src={user_icon} alt="" />
-              </span>
+              <div className="profile">
+                <motion.img
+                  whileTap={{ scale: 1.1 }}
+                  src={currentUser ? currentUser.photoURL : user_icon}
+                  alt=""
+                  onClick={toggleProfileActions}
+                />
+
+                <div
+                  className="profile__actions"
+                  ref={profileActionRef}
+                  onClick={toggleProfileActions}
+                >
+                  {currentUser ? (
+                    <span onClick={handleSignOut}> Logout</span>
+                  ) : (
+                    <div>
+                      <Link to="/signup"> Signup</Link>
+                      <Link to="/login"> Login</Link>
+                    </div>
+                  )}
+                </div>
+              </div>
 
               <div className="mobile__menu">
                 <span onClick={menuToggle}>

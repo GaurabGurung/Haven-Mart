@@ -81,9 +81,34 @@
       span i {
         font-size: 1.2rem;
       }
-      span img {
-        width: 30px;
-        height: 30px;
+      .profile {
+        position: relative;
+        z-index: 9;
+        img {
+          width: 30px;
+          height: 30px;
+          border-radius: 50%;
+          cursor: pointer;
+        }
+        .profile__actions {
+          position: absolute;
+          top: 98%;
+          left: -80px;
+          left: 0;
+          width: 150px;
+          z-index: 10;
+          padding: 15px;
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          background: #fff;
+          line-height: 30px;
+          display: none;
+          cursor: pointer;
+        }
+        .show__profileActions {
+          display: block;
+        }
       }
     }
   }
