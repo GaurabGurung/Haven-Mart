@@ -4,6 +4,7 @@ import "../Header/Header.scss";
 import logo from "../../assets/images/eco-logo.png";
 import user_icon from "../../assets/images/user-icon.png";
 
+import { toast } from "react-toastify";
 import { motion } from "framer-motion";
 
 import { Container, Row } from "reactstrap";
@@ -41,7 +42,15 @@ const Header = () => {
   const toggleProfileActions = () =>
     profileActionRef.current.classList.toggle("show__profileActions");
 
-  const handleSignOut = () => signOut(auth);
+  const handleSignOut = () =>
+    signOut(auth)
+      .then(() => {
+        toast.success("Logged out Successfully");
+        navigate("/home");
+      })
+      .catch((err) => {
+        toast.error(err.message);
+      });
 
   return (
     <header className="header sticky__header">
@@ -103,7 +112,7 @@ const Header = () => {
                   {currentUser ? (
                     <span onClick={handleSignOut}> Logout</span>
                   ) : (
-                    <div>
+                    <div className="action_menu__options">
                       <Link to="/signup"> Signup</Link>
                       <Link to="/login"> Login</Link>
                     </div>

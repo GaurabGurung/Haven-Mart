@@ -93,8 +93,8 @@
         .profile__actions {
           position: absolute;
           top: 98%;
-          left: -80px;
-          left: 0;
+          left: -70px;
+
           width: 150px;
           z-index: 10;
           padding: 15px;
@@ -105,6 +105,13 @@
           line-height: 30px;
           display: none;
           cursor: pointer;
+
+          .action_menu__options {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+          }
         }
         .show__profileActions {
           display: block;

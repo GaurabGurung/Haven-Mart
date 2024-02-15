@@ -75,7 +75,7 @@ const SignUp = () => {
 
       setLoading(false);
       toast.success("Account created successfully");
-      navigate("/login");
+      navigate("/home");
     } catch (error) {
       setLoading(false);
       switch (error.code) {
