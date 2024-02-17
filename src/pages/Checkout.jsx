@@ -8,7 +8,7 @@ import orderPic from "../assets/images/orderPic.json";
 
 import { Container, Row, Col, Form, FormGroup } from "reactstrap";
 import { useSelector, useDispatch } from "react-redux";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { cartActions } from "../redux/slices/cartSlice";
 import Lottie from "lottie-react";
 
