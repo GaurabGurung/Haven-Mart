@@ -8,6 +8,8 @@ import Shop from "../pages/Shop";
 import Cart from "../pages/Cart";
 import CheckOut from "../pages/CheckOut";
 import ProtectedRoute from "../routers/ProtectedRoute";
+import Favourites from "../pages/Favourites";
+import Thankyou from "../pages/Thankyou";
 
 const Routers = () => {
   return (
@@ -25,8 +27,10 @@ const Routers = () => {
           </ProtectedRoute>
         }
       />
+      <Route path="favourites" element={<Favourites />} />
       <Route path="login" element={<Login />} />
       <Route path="signup" element={<Signup />} />
+      <Route path="thankyou" element={<Thankyou />} />
     </Routes>
   );
 };

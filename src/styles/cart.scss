@@ -89,9 +89,9 @@
   .buy__btn {
     margin-top: 30px;
     border-radius: 999px;
-    background-color: #000;
+    background-color: var(--button_02);
     &:hover {
-      background-color: #545252;
+      background: #000;
     }
   }
 }

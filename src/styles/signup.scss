@@ -21,6 +21,12 @@
         background: #fff;
         color: #000;
         margin-bottom: 20px;
+        border: 1px solid #000;
+        &:hover {
+          background: #3a5477;
+          color: #fff;
+          border: 1px solid #fff;
+        }
       }
       a {
         color: #ffffffd6;

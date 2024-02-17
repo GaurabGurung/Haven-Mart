@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef, useState } from "react";
 import "../../styles/product-card.scss";
 
 import { motion } from "framer-motion";
@@ -7,10 +7,15 @@ import { useNavigate } from "react-router-dom";
 
 import { toast } from "react-toastify";
 
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { cartActions } from "../../redux/slices/cartSlice";
 
 const ProductCard = ({ item }) => {
+  const [isFavourite, setIsFavourite] = useState(false);
+  const handleFavourite = () => setIsFavourite(!isFavourite);
+
+  const favouriteItems = useSelector((state) => state.cart.favourites);
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -26,6 +31,34 @@ const ProductCard = ({ item }) => {
     toast.success(`Product added Successfully`);
   };
 
+  const existingItemCheck = favouriteItems.find(
+    (product) => product.id === item.id
+  );
+
+  const addItemToFavourite = () => {
+    if (!existingItemCheck) {
+      dispatch(
+        cartActions.addToFavourties({
+          id: item.id,
+          productName: item.productName,
+          imgUrl: item.imgUrl,
+          price: item.price,
+        })
+      );
+      toast.info(`Product added To Favourites`);
+    } else {
+      dispatch(
+        cartActions.addToFavourties({
+          id: item.id,
+          productName: item.productName,
+          imgUrl: item.imgUrl,
+          price: item.price,
+        })
+      );
+      toast.info("Product removed from Favourites");
+    }
+  };
+
   const navigateToProductPage = () => {
     navigate(`/shop/${item.id}`);
     window.scrollTo(0, 0);
@@ -34,9 +67,19 @@ const ProductCard = ({ item }) => {
   return (
     <Col lg="3" md="6" className="mb-2">
       <div className="product__item">
-        <div className="product__img" onClick={navigateToProductPage}>
-          <img src={item.imgUrl} alt={`${item.name} picture`} />
-          <i className="ri-external-link-line link__icon" />
+        <div className="product__img">
+          <img
+            src={item.imgUrl}
+            alt={`${item.name} picture`}
+            onClick={navigateToProductPage}
+          />
+          <div className="link__icon" onClick={handleFavourite}>
+            {existingItemCheck ? (
+              <i className="ri-heart-3-fill " onClick={addItemToFavourite} />
+            ) : (
+              <i className="ri-heart-3-line " onClick={addItemToFavourite} />
+            )}
+          </div>
         </div>
 
         <div className="product__info p-2 text-center">

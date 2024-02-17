@@ -4,6 +4,8 @@ const initialState = {
   cartItems: [],
   totalAmount: 0,
   totalQuantity: 0,
+  favourites: [],
+  favTotal: 0,
 };
 
 const cartSlice = createSlice({
@@ -19,14 +21,17 @@ const cartSlice = createSlice({
       state.totalQuantity++;
 
       if (!existingItem) {
-        state.cartItems.push({
-          id: newItem.id,
-          productName: newItem.productName,
-          imgUrl: newItem.imgUrl,
-          price: newItem.price,
-          quantity: 1,
-          totalPrice: newItem.price,
-        });
+        state.cartItems = [
+          ...state.cartItems,
+          {
+            id: newItem.id,
+            productName: newItem.productName,
+            imgUrl: newItem.imgUrl,
+            price: newItem.price,
+            quantity: 1,
+            totalPrice: newItem.price,
+          },
+        ];
       } else {
         state.cartItems = state.cartItems.map((item) =>
           item.id === existingItem.id
@@ -102,6 +107,25 @@ const cartSlice = createSlice({
         (total, item) => total + Number(item.quantity) * Number(item.price),
         0
       );
+    },
+    addToFavourties: (state, action) => {
+      const newItem = action.payload;
+      const existingItem = state.favourites.find(
+        (item) => item.id === newItem.id
+      );
+      if (!existingItem) {
+        state.favourites = [...state.favourites, newItem];
+        state.favTotal++;
+      } else {
+        state.favourites = state.favourites.filter(
+          (item) => item.id !== newItem.id
+        );
+      }
+    },
+    emptyCart: (state, action) => {
+      state.cartItems = [];
+      state.totalAmount = 0;
+      state.totalQuantity = 0;
     },
   },
 });

@@ -5,15 +5,48 @@ import Helmet from "../components/Helmet/Helmet";
 
 import { Col, Container, Row, Form, FormGroup } from "reactstrap";
 import { Link, useNavigate } from "react-router-dom";
-import { signInWithEmailAndPassword } from "firebase/auth";
+import {
+  signInAnonymously,
+  signInWithEmailAndPassword,
+  updateProfile,
+} from "firebase/auth";
 import { auth } from "../firebase.config";
 import { toast } from "react-toastify";
 import Spinner from "../components/UI/spinner";
+import guestPic from "../assets/images/avatar.jpeg";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
+
+  const handleGuestLogin = async () => {
+    setLoading(true);
+
+    try {
+      // Authenticate the user anonymously using Firebase
+      await signInAnonymously(auth);
+
+      setLoading(false);
+      toast.success("Guest logged in Successfully");
+
+      // Check if the user is logged in as a guest
+      const user = auth.currentUser;
+      if (user.isAnonymous) {
+        // Set a default profile picture URL for the guest user
+        const defaultProfilePicture = guestPic;
+        await updateProfile(user, {
+          displayName: "Guest",
+          photoURL: defaultProfilePicture,
+        });
+        navigate("/shop");
+      }
+    } catch (error) {
+      setLoading(false);
+      console.error(error);
+      alert("An error occurred. Please try again.");
+    }
+  };
 
   const navigate = useNavigate();
 
@@ -29,8 +62,6 @@ const Login = () => {
       );
 
       const { user } = userCredential;
-      console.log(user);
-
       setLoading(false);
 
       toast.success("Logged in Successfully");
@@ -88,13 +119,23 @@ const Login = () => {
                       onChange={(e) => setPassword(e.target.value)}
                     />
                   </FormGroup>
-
-                  <button className="buy__btn" type="submit">
-                    Login
-                  </button>
+                  <div className="button_container">
+                    <button className="buy__btn" type="submit">
+                      Login
+                    </button>
+                    <button
+                      className="buy__btn"
+                      type="button"
+                      onClick={handleGuestLogin}
+                    >
+                      Guest Login
+                    </button>
+                  </div>
                   <p>
                     Don't have an account?
-                    <Link to="/signup"> Create an account</Link>
+                    <Link to="/signup" className="link_to_signUp">
+                      Create an account
+                    </Link>
                   </p>
                 </Form>
               </Col>

@@ -13,6 +13,8 @@
   --small-text-color: #999;
   --heading-text-color: #0a1d37;
   --pink-highlight: rgb(234, 105, 127);
+  --favourites: rgb(235, 182, 190);
+  --button_02: #3a64a4;
 }
 
 /* reset browser default */

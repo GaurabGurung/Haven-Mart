@@ -17,14 +17,59 @@
           width: 100%;
         }
       }
-      .buy__btn {
-        background: #fff;
-        color: #000;
-        margin-bottom: 20px;
+
+      .button_container {
+        display: flex;
+        gap: 50px;
+        @media screen and (max-width: 1199px) {
+          flex-direction: column;
+          gap: 0px;
+          margin-top: 15px;
+          .buy__btn {
+            margin-top: 2px;
+          }
+        }
+
+        .buy__btn {
+          background: #e0dada;
+          color: #000;
+          margin-bottom: 20px;
+          border: 1px solid #000;
+          padding: 5px;
+
+          &:hover {
+            background: #3a5477;
+            color: #fff;
+            border: 1px solid #fff;
+          }
+        }
       }
       a {
         color: #ffffffd6;
+        &:hover {
+          color: rgb(175, 175, 232);
+          cursor: pointer;
+        }
       }
     }
+  }
+}
+.processing {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  min-height: 50vh;
+  .icon {
+    width: 300px;
+    margin: 0;
+    padding-top: 20px;
+  }
+  p {
+    position: absolute;
+    margin: 0;
+    padding-top: 10px;
+    margin-top: 100px;
+    color: #000;
   }
 }

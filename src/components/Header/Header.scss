@@ -62,10 +62,10 @@
 
         > .badge {
           position: absolute;
-          top: 30%;
+          top: 20%;
           right: -5px;
-          width: 13px;
-          height: 13px;
+          width: 17px;
+          height: 17px;
           content: "";
           background: var(--primary-color);
           display: flex;
@@ -79,7 +79,7 @@
         }
       }
       span i {
-        font-size: 1.2rem;
+        font-size: 1.5rem;
       }
       .profile {
         position: relative;
@@ -104,13 +104,25 @@
           background: #fff;
           line-height: 30px;
           display: none;
-          cursor: pointer;
+          .option {
+            &:hover {
+              color: rgb(138, 138, 217);
+              cursor: pointer;
+            }
+          }
 
           .action_menu__options {
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
+
+            .option {
+              &:hover {
+                color: rgb(138, 138, 217);
+                cursor: pointer;
+              }
+            }
           }
         }
         .show__profileActions {

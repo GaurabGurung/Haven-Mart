@@ -29,5 +29,11 @@
   .buy__btn {
     background: #fff;
     color: #000;
+    border: 1px solid #000;
+    &:hover {
+      background: #3a5477;
+      color: #fff;
+      border: 1px solid #fff;
+    }
   }
 }

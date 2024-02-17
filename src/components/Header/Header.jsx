@@ -27,8 +27,14 @@ const Header = () => {
   const profileActionRef = useRef(null);
   const navigate = useNavigate();
 
+  const favTotal = useSelector((state) => state.cart.favTotal);
+
   const navigateToCart = () => {
     navigate("/cart");
+  };
+
+  const navigateToFavourites = () => {
+    navigate("/favourites");
   };
 
   const [isSideMenuOpen, setIsSideMenuOpen] = useState(false);
@@ -85,15 +91,12 @@ const Header = () => {
             </div>
 
             <div className="nav__icons">
-              <span className="fav__icon">
+              <span className="fav__icon" onClick={navigateToFavourites}>
                 <i className="ri-heart-3-line"></i>
-                <span className="badge">1</span>
+                <span className="badge">{favTotal}</span>
               </span>
-              <span className="cart__icon">
-                <i
-                  className="ri-shopping-cart-2-line"
-                  onClick={navigateToCart}
-                ></i>
+              <span className="cart__icon" onClick={navigateToCart}>
+                <i className="ri-shopping-cart-2-line"></i>
                 <span className="badge">{totalQuantity}</span>
               </span>
               <div className="profile">
@@ -110,11 +113,17 @@ const Header = () => {
                   onClick={toggleProfileActions}
                 >
                   {currentUser ? (
-                    <span onClick={handleSignOut}> Logout</span>
+                    <span onClick={handleSignOut} className="option">
+                      Logout
+                    </span>
                   ) : (
                     <div className="action_menu__options">
-                      <Link to="/signup"> Signup</Link>
-                      <Link to="/login"> Login</Link>
+                      <Link to="/signup" className="option">
+                        Signup
+                      </Link>
+                      <Link to="/login" className="option">
+                        Login
+                      </Link>
                     </div>
                   )}
                 </div>

@@ -1,0 +1,17 @@
+.fav__container {
+  .empty {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 50px;
+
+    .text {
+      color: grey;
+      font-size: 1.2rem;
+    }
+
+    .buy__btn {
+      margin-top: 10px;
+    }
+  }
+}
