@@ -7,7 +7,7 @@ import Home from "../pages/Home";
 import Shop from "../pages/Shop";
 import Cart from "../pages/Cart";
 import CheckOut from "../pages/CheckOut";
-import ProtectedRoute from "../routers/ProtectedRoute";
+import ProtectedRoute from "./ProtectedRoute";
 import Favourites from "../pages/Favourites";
 import Thankyou from "../pages/Thankyou";
 
