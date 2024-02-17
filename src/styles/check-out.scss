@@ -37,3 +37,28 @@
     }
   }
 }
+.processing__container {
+  .processing {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    min-height: 50vh;
+    .icon {
+      width: 50vh;
+      margin: 0;
+      padding-top: 20px;
+      // @media screen and (min-height: 990px) {
+      //   width: 400px;
+      // }
+    }
+    p {
+      position: absolute;
+      margin: 0;
+      padding-top: 10px;
+      margin-top: 100px;
+      color: #000;
+      font-size: 2rem;
+    }
+  }
+}

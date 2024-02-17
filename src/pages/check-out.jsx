@@ -17,7 +17,7 @@ const CheckOut = () => {
   const totalAmt = useSelector((state) => state.cart.totalAmount);
 
   const dispatch = useDispatch();
-  const [processing, setProcessing] = useState(false);
+  const [processing, setProcessing] = useState(true);
 
   const navigate = useNavigate();
 
@@ -39,7 +39,7 @@ const CheckOut = () => {
   return (
     <Helmet title="Check Out">
       {processing && (
-        <Container>
+        <Container className="processing__container">
           <Row>
             <Col>
               <div className="processing">
