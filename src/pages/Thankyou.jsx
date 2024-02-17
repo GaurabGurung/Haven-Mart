@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import "../styles/thankyou.scss";
 import Helmet from "../components/Helmet/Helmet";
 import CommonSection from "../components/UI/common-section";
