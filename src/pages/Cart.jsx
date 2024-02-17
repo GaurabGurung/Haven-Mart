@@ -86,7 +86,7 @@ const Cart = () => {
                           <td>$ {item.price}</td>
                           <td>
                             <motion.i
-                              whileTap={{ scale: 1.2 }}
+                              whileTap={{ scale: 1.3 }}
                               className="ri-delete-bin-6-line delete__icon"
                               onClick={() => deleteProduct(item)}
                             />
