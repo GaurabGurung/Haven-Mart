@@ -17,7 +17,7 @@ const CheckOut = () => {
   const totalAmt = useSelector((state) => state.cart.totalAmount);
 
   const dispatch = useDispatch();
-  const [processing, setProcessing] = useState(true);
+  const [processing, setProcessing] = useState(false);
 
   const navigate = useNavigate();
 
