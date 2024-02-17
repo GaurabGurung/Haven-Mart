@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "../styles/check-out.scss";
 
 import Helmet from "../components/Helmet/Helmet";
@@ -16,8 +16,6 @@ const CheckOut = () => {
   const totalQty = useSelector((state) => state.cart.totalQuantity);
   const totalAmt = useSelector((state) => state.cart.totalAmount);
 
-  const cartItems = useSelector((state) => state.cart.cartItems);
-
   const dispatch = useDispatch();
   const [processing, setProcessing] = useState(false);
 
@@ -33,6 +31,10 @@ const CheckOut = () => {
       navigate("/thankyou");
     }, 4000);
   };
+
+  useEffect(() => {
+    window.scroll(0, 0);
+  }, [processing]);
 
   return (
     <Helmet title="Check Out">

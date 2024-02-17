@@ -65,7 +65,7 @@ const ProductCard = ({ item }) => {
   };
 
   return (
-    <Col lg="3" md="6" className="mb-2">
+    <Col lg="3" md="6" sm="6" className="mb-2">
       <div className="product__item">
         <div className="product__img">
           <img

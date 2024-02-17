@@ -90,7 +90,7 @@ const Header = () => {
               </ul>
             </div>
 
-            <div className="nav__icons" onClick={menuToggle}>
+            <div className="nav__icons">
               <span className="fav__icon" onClick={navigateToFavourites}>
                 <i className="ri-heart-3-line"></i>
                 <span className="badge">{favTotal}</span>
