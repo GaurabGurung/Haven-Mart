@@ -120,6 +120,7 @@ const cartSlice = createSlice({
         state.favourites = state.favourites.filter(
           (item) => item.id !== newItem.id
         );
+        state.favTotal--;
       }
     },
     emptyCart: (state, action) => {
