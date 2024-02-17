@@ -6,7 +6,7 @@ import Signup from "../pages/SignUp";
 import Home from "../pages/Home";
 import Shop from "../pages/Shop";
 import Cart from "../pages/Cart";
-import CheckOut from "../pages/CheckOut.jsx";
+import CheckOut from "../pages/check-out.jsx";
 
 import ProtectedRoute from "./ProtectedRoute";
 import Favourites from "../pages/Favourites";
