@@ -14,6 +14,9 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { CategoryProvider } from "./context/category.context";
 
+import { Elements } from "@stripe/react-stripe-js";
+import { stripePromise } from "./stripe/stripe.utils";
+
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
@@ -33,8 +36,9 @@ root.render(
               pauseOnHover
               theme="dark"
             />
-
-            <App />
+            <Elements stripe={stripePromise}>
+              <App />
+            </Elements>
           </Provider>
         </BrowserRouter>
       </CategoryProvider>
